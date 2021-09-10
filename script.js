@@ -136,3 +136,7 @@ btnDelete.addEventListener("click", () => {
     calculadora.delete()
     calculadora.updateDisplay()
 })
+
+equal.addEventListener("click", button => {
+    alert("VOCÊ SABIA?? PESSOAS QUE USAM UMA CALCULADORA EM VEZ DE DECORAR A TABUADA TEM 100% A MAIS DE CHANCE DE SEREM CORNOS!")
+}, {once: true})
