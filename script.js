@@ -137,6 +137,52 @@ btnDelete.addEventListener("click", () => {
     calculadora.updateDisplay()
 })
 
-equal.addEventListener("click", button => {
-    alert("VOCÊ SABIA?? PESSOAS QUE USAM UMA CALCULADORA EM VEZ DE DECORAR A TABUADA TEM 100% A MAIS DE CHANCE DE SEREM CORNOS!")
-}, {once: true})
+// Adding keyboard support
+
+window.addEventListener("keydown", (event) => {
+    let numberCliked = document.querySelector(`[data-number="${event.key}"]`)
+    if (numberCliked == null) return
+
+    calculadora.appendNumber(numberCliked.innerText)
+    calculadora.updateDisplay()
+});
+
+
+window.addEventListener("keydown", (event) => {
+    let operationClicked = document.querySelector(`[data-operation="${event.key}"]`)
+    
+    if (operationClicked == null) return
+
+    calculadora.chooseOperation(operationClicked.innerText);
+    calculadora.updateDisplay()
+
+});
+
+window.addEventListener("keydown", (event) => {
+    let equalCLiked = document.querySelector(`[data-equal="${event.key}"]`)
+
+    if (equalCLiked == null && event.key != "Enter") return
+
+    calculadora.compute()
+    calculadora.updateDisplay()
+
+});
+
+window.addEventListener("keydown", (event) => {
+    let deleteClicked = document.querySelector(`[data-delete="${event.key}"]`)
+
+    if (deleteClicked == null) return
+
+    calculadora.delete()
+    calculadora.updateDisplay()
+})
+
+
+window.addEventListener("keydown", (event) => {
+    let clearClicked = document.querySelector(`[data-clear="${event.key}"]`)
+
+    if (clearClicked == null) return
+
+    calculadora.clear()
+})
+
